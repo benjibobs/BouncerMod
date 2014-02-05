@@ -1,0 +1,20 @@
+[
+{
+  "modid": "bbouncer",
+  "name" : "Bouncer",
+  "description" : "Adds 3 bouncer blocks!",
+  "version": "1",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "benjibobs"
+  ],
+  "credits": "benjibobs",
+  "logoFile": "assets/bpogostick/textures/items/logo.png - CHANGEME",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
