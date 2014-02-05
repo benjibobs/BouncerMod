@@ -46,6 +46,11 @@ serverPacketHandlerSpec = @SidedPacketHandler(channels = {"Pogostick"}, packetHa
 
 public class Bouncer {
 	
+	public static CreativeTabs tabBouncer = new CreativeTabs("Bouncer") {
+        public ItemStack getIconItemStack() {
+                return new ItemStack(mantramp, 1, 0);
+        }
+};
 	
 	public static final String modid = "bbouncer";
 
@@ -84,6 +89,13 @@ public class Bouncer {
     LanguageRegistry.addName(mantramp, "Manual Bouncer");
     GameRegistry.registerBlock(mantramp, "Manual Bouncer");
     
+    semiautotramp = new BlockSemiTramp(2878, "semibouncer");
+    semiautotramp.setUnlocalizedName("semibouncer");
+    semiautotramp.setHardness(0.7F);
+    semiautotramp.setStepSound(Block.soundClothFootstep);
+    semiautotramp.setResistance(0.7F);
+    LanguageRegistry.addName(semiautotramp, "Semi-auto bouncer");
+    GameRegistry.registerBlock(semiautotramp, "Semi-auto bouncer");
     
     //Recipes
 
@@ -91,6 +103,7 @@ public class Bouncer {
     ItemStack woolStack = new ItemStack(Block.cloth);
 
     GameRegistry.addRecipe(new ItemStack(mantramp), "xxx", "xyx", "xxx", 'x', woolStack, 'y', slimeStack);  
+    LanguageRegistry.addName(tabBouncer, "Bouncer");
     
     MinecraftForge.EVENT_BUS.register(new BouncerEvents());
 	}

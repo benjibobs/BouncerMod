@@ -13,7 +13,7 @@ public class BlockManTramp extends Block {
 
 	public BlockManTramp(int id, String texture) {
 		super(id, Material.cloth);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(Bouncer.tabBouncer);
 		
 	}
 	
