@@ -27,6 +27,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
@@ -55,7 +56,7 @@ public class Bouncer {
 	public static final String modid = "bbouncer";
 
 	
-	public static Block autotramp;
+//	public static Block autotramp;
 	public static Block mantramp;
 	public static Block semiautotramp;
 	
@@ -94,18 +95,32 @@ public class Bouncer {
     semiautotramp.setHardness(0.7F);
     semiautotramp.setStepSound(Block.soundClothFootstep);
     semiautotramp.setResistance(0.7F);
-    LanguageRegistry.addName(semiautotramp, "Semi-auto bouncer");
-    GameRegistry.registerBlock(semiautotramp, "Semi-auto bouncer");
+    LanguageRegistry.addName(semiautotramp, "Automatic bouncer");
+    GameRegistry.registerBlock(semiautotramp, "Automatic bouncer");
+    
+//    autotramp = new BlockAutoTramp(2879, "autobouncer");
+//    autotramp.setUnlocalizedName("autobouncer");
+//    autotramp.setHardness(0.7F);
+//    autotramp.setStepSound(Block.soundClothFootstep);
+//    autotramp.setResistance(0.7F);
+//    LanguageRegistry.addName(autotramp, "Automatic Bouncer");
+//    GameRegistry.registerBlock(autotramp, "Automatic Bouncer");
     
     //Recipes
 
     ItemStack slimeStack = new ItemStack(Item.slimeBall);
     ItemStack woolStack = new ItemStack(Block.cloth);
+    ItemStack manStack = new ItemStack(mantramp);
+    ItemStack redstoneStack = new ItemStack(Item.redstone);
 
-    GameRegistry.addRecipe(new ItemStack(mantramp), "xxx", "xyx", "xxx", 'x', woolStack, 'y', slimeStack);  
-    LanguageRegistry.addName(tabBouncer, "Bouncer");
+    GameRegistry.addRecipe(new ItemStack(mantramp), "xxx", "xyx", "xxx", 'x', woolStack, 'y', slimeStack);
+    GameRegistry.addRecipe(new ItemStack(semiautotramp), "xxx", "xyx", "xxx", 'x', redstoneStack, 'y', manStack);
+   
+    LanguageRegistry.instance().addStringLocalization("itemGroup.Bouncer", "Bouncer");
     
     MinecraftForge.EVENT_BUS.register(new BouncerEvents());
+    MinecraftForge.EVENT_BUS.register(new SemiBouncerEvents());
+//    MinecraftForge.EVENT_BUS.register(new AutoBouncerEvents());
 	}
 	
 	}
