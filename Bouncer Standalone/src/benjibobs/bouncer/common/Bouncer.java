@@ -55,10 +55,11 @@ public class Bouncer {
 	
 	public static final String modid = "bbouncer";
 
+	static EnumArmorMaterial armorPOGO = EnumHelper.addArmorMaterial("armorPOGO", 35, new int[] {1, 1, 1, 1}, 0);
 	
-//	public static Block autotramp;
 	public static Block mantramp;
 	public static Block semiautotramp;
+	public static Item bouncyboots;
 	
 	public final MinecraftServer mcs = FMLServerHandler.instance().getServer();	
 
@@ -98,16 +99,12 @@ public class Bouncer {
     LanguageRegistry.addName(semiautotramp, "Automatic bouncer");
     GameRegistry.registerBlock(semiautotramp, "Automatic bouncer");
     
-//    autotramp = new BlockAutoTramp(2879, "autobouncer");
-//    autotramp.setUnlocalizedName("autobouncer");
-//    autotramp.setHardness(0.7F);
-//    autotramp.setStepSound(Block.soundClothFootstep);
-//    autotramp.setResistance(0.7F);
-//    LanguageRegistry.addName(autotramp, "Automatic Bouncer");
-//    GameRegistry.registerBlock(autotramp, "Automatic Bouncer");
+    bouncyboots = new ItemBBoots(6987, armorPOGO, 5, 3);
+    bouncyboots.setUnlocalizedName("bouncyboots");
+    LanguageRegistry.addName(bouncyboots, "Bouncy Boots");
+    GameRegistry.registerItem(bouncyboots, "Bouncy Boots");
     
     //Recipes
-
     ItemStack slimeStack = new ItemStack(Item.slimeBall);
     ItemStack woolStack = new ItemStack(Block.cloth);
     ItemStack manStack = new ItemStack(mantramp);
@@ -115,12 +112,14 @@ public class Bouncer {
 
     GameRegistry.addRecipe(new ItemStack(mantramp), "xxx", "xyx", "xxx", 'x', woolStack, 'y', slimeStack);
     GameRegistry.addRecipe(new ItemStack(semiautotramp), "xxx", "xyx", "xxx", 'x', redstoneStack, 'y', manStack);
-   
+    
+    RenderingRegistry.addNewArmourRendererPrefix("armorPOGO");
+    
     LanguageRegistry.instance().addStringLocalization("itemGroup.Bouncer", "Bouncer");
     
     MinecraftForge.EVENT_BUS.register(new BouncerEvents());
     MinecraftForge.EVENT_BUS.register(new SemiBouncerEvents());
-//    MinecraftForge.EVENT_BUS.register(new AutoBouncerEvents());
+    MinecraftForge.EVENT_BUS.register(new BouncyBootsEvents());
 	}
 	
 	}
