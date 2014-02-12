@@ -109,9 +109,12 @@ public class Bouncer {
     ItemStack woolStack = new ItemStack(Block.cloth);
     ItemStack manStack = new ItemStack(mantramp);
     ItemStack redstoneStack = new ItemStack(Item.redstone);
+    ItemStack emeraldStack = new ItemStack(Item.emerald);
 
     GameRegistry.addRecipe(new ItemStack(mantramp), "xxx", "xyx", "xxx", 'x', woolStack, 'y', slimeStack);
     GameRegistry.addRecipe(new ItemStack(semiautotramp), "xxx", "xyx", "xxx", 'x', redstoneStack, 'y', manStack);
+    GameRegistry.addRecipe(new ItemStack(bouncyboots), "x x", "y y", "   ", 'x', emeraldStack, 'y', slimeStack);
+    GameRegistry.addRecipe(new ItemStack(bouncyboots), "   ", "x x", "y y", 'x', emeraldStack, 'y', slimeStack);
     
     RenderingRegistry.addNewArmourRendererPrefix("armorPOGO");
     

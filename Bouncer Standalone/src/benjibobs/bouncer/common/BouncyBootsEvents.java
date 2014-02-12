@@ -51,8 +51,8 @@ public class BouncyBootsEvents {
 			EntityPlayer player = (EntityPlayer)event.entity;
 			if(player.inventory.armorItemInSlot(0) != null){
 				if(player.inventory.armorItemInSlot(0).itemID == Bouncer.bouncyboots.itemID){
-					//TODO: Add proper jump height
-					player.motionY = 69;
+					
+					player.motionY = 0.7;
 				}
 			}
 		}
